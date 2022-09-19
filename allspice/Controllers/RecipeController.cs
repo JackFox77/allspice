@@ -51,5 +51,21 @@ namespace allspice.Controllers
                 return BadRequest(e.Message);
             }
         }
+        [HttpDelete("{id}")]
+        public ActionResult<string> Delete(int id)
+        {
+            try
+            {
+                return Ok(_recipeService.Delete(id));
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e);
+
+
+            }
+        }
+
+
     }
 }

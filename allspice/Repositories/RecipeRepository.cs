@@ -33,6 +33,16 @@ namespace allspice.Repositories
             return recipes;
         }
 
+        internal Recipe GetById(int id)
+        {
+            string sql = @"
+            Select * FROM recipes
+            WHERE id=@id;
+            ";
+            Recipe recipe = _db.Query<Recipe>(sql, new { id }).FirstOrDefault();
+            return recipe;
+        }
+
         public Recipe Create(Recipe newRecipe)
         {
             string sql = @"
@@ -45,6 +55,14 @@ namespace allspice.Repositories
             int id = _db.ExecuteScalar<int>(sql, newRecipe);
             newRecipe.Id = id;
             return newRecipe;
+        }
+
+        internal void Delete(int id)
+        {
+            string sql = @"
+            DELETE FROM recipes WHERE id = @id;
+            ";
+            _db.Execute(sql, new { id });
         }
     }
 }
