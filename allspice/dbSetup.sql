@@ -11,8 +11,13 @@ CREATE TABLE IF NOT EXISTS accounts(
 CREATE TABLE IF NOT EXISTS recipes
 (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  title VARCHAR(50) NOT NULL,
-  subtitle VARCHAR(100) NOT NULL
-  category VARCHAR(30) NOT NULL
+  title VARCHAR(255) NOT NULL,
+  subtitle VARCHAR(255) NOT NULL,
+  category VARCHAR(255) NOT NULL,
   creatorid VARCHAR(255) NOT NULL
-)
+) default charset utf8 COMMENT '';
+
+INSERT INTO recipes
+(Title,Subtitle,Category,creatorId)
+VALUES
+('lasagna','best italian food','italian','6323931711609c667cc52a1c')

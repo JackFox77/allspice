@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 
 namespace allspice.Models
 {
@@ -9,5 +8,11 @@ namespace allspice.Models
         public string Name { get; set; }
         public string Email { get; set; }
         public string Picture { get; set; }
+
+        public static implicit operator string(Account v)
+        {
+            throw new NotImplementedException();
+        }
     }
+
 }
