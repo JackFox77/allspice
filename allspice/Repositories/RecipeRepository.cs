@@ -64,5 +64,18 @@ namespace allspice.Repositories
             ";
             _db.Execute(sql, new { id });
         }
+
+        internal Recipe Update(Recipe recipeData)
+        {
+            string sql = @"
+            UPDATE recipes SET
+            title=@title,
+            subtitle=@subtitle,
+            category=@category
+            WHERE id =@id
+            ";
+            _db.Execute(sql, recipeData);
+            return recipeData;
+        }
     }
 }

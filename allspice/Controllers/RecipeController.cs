@@ -66,6 +66,21 @@ namespace allspice.Controllers
             }
         }
 
-
+        [HttpPut("{id}")]
+        [Authorize]
+        public async Task<ActionResult<string>> Update(int id, [FromBody] Recipe update)
+        {
+            try
+            {
+                Account user = await HttpContext.GetUserInfoAsync<Account>();
+                update.Id = id;
+                Recipe recipe = _recipeService.Update(update, user.Id);
+                return Ok(recipe);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
     }
 }

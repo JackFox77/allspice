@@ -40,5 +40,10 @@ namespace allspice.Services
             _recipeRepo.Delete(id);
             return $"Deleted the {recipe.Title}";
         }
+
+        // internal Recipe Update(Recipe update, string userId)
+        // {
+
+        // }
     }
 }
